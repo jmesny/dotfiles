@@ -5,7 +5,7 @@
 	autocrlf = false
 	safecrlf = true
 	editor = vim
-	excludesfile = !bash -c '"echo \"$HOME\"/.gitignore_global;"
+	excludesfile = ~/.gitignore_global
 [alias]
 	co = checkout
 	ci = commit
