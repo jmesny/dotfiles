@@ -1,0 +1,31 @@
+[user]
+	name = Jonathan Mesny
+	email = jmesny@antidot.net
+[core]
+	autocrlf = false
+	safecrlf = true
+	editor = vim
+	excludesfile = !bash -c '"echo \"$HOME\"/.gitignore_global;"
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	cp = cherry-pick
+	br = branch
+	l0g = log --pretty=format:\"%C(yellow)%h%Creset %ad | %s%Cred%d%Creset %Cblue[%an]%Creset\" --date=short
+	ls = "!git l0g --graph"
+	ll = "!git l0g --numstat"
+	hist = "!git ls"
+	pull = pull
+[color]
+	ui = true
+[help]
+	autocorrect = 1
+[push]
+	default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
