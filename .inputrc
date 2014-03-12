@@ -1,0 +1,4 @@
+set completion-ignore-case on
+set visible-stats on
+set disable-completion off
+set editing-mode vi
