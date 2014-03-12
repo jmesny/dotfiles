@@ -13,7 +13,6 @@ source $HOME/.bash_aliases
 eval "$(jenv init -)"
 
 
-
 ####################################################################
 #                         BASH-IT !
 ####################################################################
@@ -21,16 +20,25 @@ eval "$(jenv init -)"
 # Path to the bash it configuration
 export BASH_IT=$HOME/.bash_it
 
-# Lock and Load a custom theme file
-# location /.bash_it/themes/
-export BASH_IT_THEME='J0n'
+if [ -d $BASH_IT ]; then
+	if [ -d $HOME/.bash_it_themes ]; then
 
-# Set my editor and git editor
-export EDITOR="/usr/bin/vi"
-export GIT_EDITOR='/usr/bin/vi'
+		if [ ! -L $BASH_IT/themes/J0n ]; then
+			ln -s $HOME/.bash_it_themes/J0n $BASH_IT/themes
+		fi
 
-# Don't check mail when opening terminal.
-unset MAILCHECK
+		# Lock and Load a custom theme file
+		# location /.bash_it/themes/
+		export BASH_IT_THEME="J0n"
+	fi
 
-# Load Bash It
-source $BASH_IT/bash_it.sh
+	# Set my editor and git editor
+	export EDITOR="/usr/bin/vi"
+	export GIT_EDITOR="/usr/bin/vi"
+
+	# Don't check mail when opening terminal.
+	unset MAILCHECK
+
+	# Load Bash It
+	source $BASH_IT/bash_it.sh
+fi
