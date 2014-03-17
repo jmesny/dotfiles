@@ -12,6 +12,7 @@ source $HOME/.bash_aliases
 
 eval "$(jenv init -)"
 
+export DOCKER_HOST="tcp://localhost:4243"
 
 ####################################################################
 #                         BASH-IT !
