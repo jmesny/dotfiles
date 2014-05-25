@@ -34,3 +34,19 @@ alias ftw='cd ~/Documents/workspace/fluid-topics/interface/fluid-topics-widgets'
 alias fts='cd ~/Documents/workspace/fluid-topics/interface/fluid-topics-portal'
 alias ftc='cd ~/Documents/workspace/fluid-topics-projects-configuration'
 alias afs='cd ~/Documents/workspace/afs'
+
+
+alias restore-terminal="osascript \
+	-e 'tell application \"Terminal\"' \
+	-e ' activate' \
+	-e ' set requestedTabs to 4' \
+	-e ' set existingTabs to number of tabs of front window' \
+	-e ' repeat with i from existingTabs to requestedTabs - 1' \
+	-e '   tell application \"System Events\" to keystroke \"t\" using command down' \
+	-e ' end repeat' \
+	-e ' do script \"afs\" in tab 1 of front window' \
+	-e ' do script \"ftw\" in tab 2 of front window' \
+	-e ' do script \"ftc\" in tab 3 of front window' \
+	-e ' do script \"fts\" in tab 4 of front window' \
+	-e 'end tell' \
+"
