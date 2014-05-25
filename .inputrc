@@ -1,4 +1,4 @@
 set completion-ignore-case on
 set visible-stats on
 set disable-completion off
-set editing-mode vi
+set editing-mode emacs # http://superuser.com/questions/316668/ctrl-a-doesnt-work-in-bash-terminal-on-os-x-lion
