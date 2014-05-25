@@ -28,3 +28,9 @@ function psgrep(){
 	ps aux | grep $1 | grep -v grep
 }
 
+alias ws='cd ~/Documents/workspace'
+alias ft='cd ~/Documents/workspace/fluid-topics'
+alias ftw='cd ~/Documents/workspace/fluid-topics/interface/fluid-topics-widgets'
+alias fts='cd ~/Documents/workspace/fluid-topics/interface/fluid-topics-portal'
+alias ftc='cd ~/Documents/workspace/fluid-topics-projects-configuration'
+alias afs='cd ~/Documents/workspace/afs'
