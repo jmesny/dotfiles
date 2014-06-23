@@ -17,6 +17,16 @@ alias ftc='cd ~/Documents/workspace/fluid-topics-projects-configuration'
 alias afs='cd ~/Documents/workspace/afs'
 
 
+check_play_or_fallback() {
+	if [ `which play` ]; then 
+		play $@
+	else 
+		echo "'play' command not found, fallbacking to 'activator'"
+		activator $@
+	fi
+}
+alias play=check_play_or_fallback
+
 alias restore-terminal="osascript \
 	-e 'tell application \"Terminal\"' \
 	-e ' activate' \

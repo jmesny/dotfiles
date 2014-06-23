@@ -1,7 +1,6 @@
 
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="$HOME/Library/Frameworks/play/latest:$PATH"
-export PATH="$HOME/Library/Frameworks/activator/latest:$PATH"
 export PATH="$HOME/Library/Frameworks/tests/phantomjs/latest/bin:$PATH"
 export PATH="$HOME/Library/Frameworks/tests/slimerjs/latest:$PATH"
 export PATH="$HOME/Library/Frameworks/tests/casperjs/latest/bin:$PATH"
