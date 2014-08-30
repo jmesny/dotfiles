@@ -41,3 +41,5 @@ alias restore-terminal="osascript \
 	-e ' do script \"fts\" in tab 4 of front window' \
 	-e 'end tell' \
 "
+
+alias update-osx="~/.update-osx.sh"
