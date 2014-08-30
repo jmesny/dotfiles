@@ -44,3 +44,17 @@ alias restore-terminal="osascript \
 
 alias update-osx="~/.update-osx.sh"
 alias brew-backup="~/.brew-backup.sh > ~/Dropbox/brew-restore.sh"
+
+launch_brew_and_backup() {
+	brew $@
+	while test $# -gt 0
+	do
+		case "$1" in
+			install|uninstall) brew-backup
+				;;
+		esac
+		shift
+	done
+}
+alias brew=launch_brew_and_backup
+
