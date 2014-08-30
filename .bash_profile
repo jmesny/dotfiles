@@ -16,3 +16,4 @@ source $HOME/.prompt.bash
 eval "$(jenv init -)"
 
 export DOCKER_HOST="tcp://localhost:4243"
+export GIT_MERGE_AUTOEDIT=no
