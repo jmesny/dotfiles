@@ -43,3 +43,4 @@ alias restore-terminal="osascript \
 "
 
 alias update-osx="~/.update-osx.sh"
+alias brew-backup="~/.brew-backup.sh > ~/Dropbox/brew-restore.sh"
