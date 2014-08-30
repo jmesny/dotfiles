@@ -1,3 +1,4 @@
 LICENSE
 README.*
 .gitmodules
+.DS_Store
