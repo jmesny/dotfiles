@@ -4,6 +4,9 @@ echo "#!/bin/bash"
 
 echo "ruby -e \"\$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)\""
 
+echo "brew update"
+echo "brew upgrade"
+
 brew tap | while read tap; do echo "brew tap $tap"; done
 
 brew list | while read item; do echo "brew install $item"; done
