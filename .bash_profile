@@ -55,15 +55,14 @@ alias restore-terminal="osascript \
     -e 'end tell' \
 "
 
-alias update-osx="~/.update-osx.sh"
-alias brew-backup="~/.brew-backup.sh > ~/Dropbox/brew-restore.sh"
+alias update-osx="$HOME/.update-osx.sh"
+alias backup-brew="$HOME/.backup-brew.sh > $HOME/Dropbox/brew-restore.sh && chmod +x $HOME/Dropbox/brew-restore.sh"
 
 function launch_brew_and_backup() {
-    brew $@
-    while test $# -gt 0
-    do
+    /usr/local/bin/brew $@
+    while test $# -gt 0; do
         case "$1" in
-            install|uninstall) brew-backup
+            install|uninstall) backup-brew
                 ;;
         esac
         shift
@@ -72,6 +71,27 @@ function launch_brew_and_backup() {
 
 alias brew=launch_brew_and_backup
 
+alias backup-workspace="$HOME/.backup-workspace.sh > $HOME/Dropbox/Antidot/workspace-restore.sh && chmod +x $HOME/Dropbox/Antidot/workspace-restore.sh"
+
+function launch_git_and_backup() {
+    command="/usr/local/bin/git"
+    for arg in "$@"; do
+        if [[ $arg =~ [[:space:]] ]]; then
+            arg=\"${arg}\"
+        fi
+        command="${command} ${arg}"
+    done
+    eval ${command}
+    while test $# -gt 0; do
+        case "$1" in
+            clone|remote) backup-workspace
+                ;;
+        esac
+        shift
+    done
+}
+
+alias git=launch_git_and_backup
 
 # requires `brew install bash-completion`
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
