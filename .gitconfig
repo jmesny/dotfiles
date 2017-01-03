@@ -2,10 +2,10 @@
 	name = Jonathan Mesny
 	email = jmesny@antidot.net
 [core]
-	autocrlf = false
+	autocrlf = input
 	safecrlf = true
 	editor = vim
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/jo/.gitignore_global
 [alias]
 	co = checkout
 	ci = commit
@@ -29,3 +29,7 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[grep]
+	extendRegexp = true
+[commit]
+	template = /Users/jo/.stCommitMsg
