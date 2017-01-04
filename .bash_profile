@@ -56,6 +56,7 @@ alias restore-terminal="osascript \
 "
 
 alias update-osx="$HOME/.update-osx.sh"
+
 alias backup-brew="$HOME/.backup-brew.sh > $HOME/Dropbox/brew-restore.sh && chmod +x $HOME/Dropbox/brew-restore.sh"
 
 function launch_brew_and_backup() {
@@ -70,6 +71,21 @@ function launch_brew_and_backup() {
 }
 
 alias brew=launch_brew_and_backup
+
+alias backup-pip3="$HOME/.backup-pip3.sh > $HOME/Dropbox/pip3-restore.sh && chmod +x $HOME/Dropbox/pip3-restore.sh"
+
+function launch_pip3_and_backup() {
+    /usr/local/bin/pip3 $@
+    while test $# -gt 0; do
+        case "$1" in
+            install|uninstall) backup-pip3
+                ;;
+        esac
+        shift
+    done
+}
+
+alias pip3=launch_pip3_and_backup
 
 alias backup-workspace="$HOME/.backup-workspace.sh > $HOME/Dropbox/Antidot/workspace-restore.sh && chmod +x $HOME/Dropbox/Antidot/workspace-restore.sh"
 

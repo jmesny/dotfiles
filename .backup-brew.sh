@@ -8,9 +8,9 @@ echo "brew doctor"
 echo "brew update"
 echo "brew upgrade"
 
-brew tap -q | while read tap; do echo "brew tap $tap"; done
-brew leaves | while read item; do echo "brew install $item"; done
-brew cask list | while read cask; do echo "brew cask install $cask"; done
+brew tap -q | while read tap; do echo "brew tap ${tap}"; done
+brew leaves | while read item; do echo "brew install ${item}"; done
+brew cask list | while read cask; do echo "brew cask install ${cask}"; done
 
 echo "brew cleanup"
 
