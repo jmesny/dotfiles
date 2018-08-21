@@ -10,7 +10,14 @@ brew upgrade -y
 brew cleanup -s --force
 
 echo ""
-echo "####################> Updates from OS X installer <####################"
+echo "####################> Updates from Pip3 installer <####################"
+echo ""
+
+pip3 install --upgrade pip setuptools wheel
+pip3 install -U `pip3 list --outdated --format freeze | sed 's/==.*//'`
+
+echo ""
+echo "####################> Updates from macOS installer <###################"
 echo ""
 
 sudo softwareupdate --reset-ignore

@@ -12,11 +12,9 @@
 	st = status
 	cp = cherry-pick
 	br = branch
-	l0g = log --pretty=format:\"%C(yellow)%h%Creset %ad | %s%Cred%d%Creset %Cblue[%an]%Creset\" --date=short
-	ls = "!git l0g --graph"
-	ll = "!git l0g --numstat"
-	hist = "!git ls"
-	pull = pull
+	lg = log --pretty=format:\"%C(yellow)%h%Creset %ad - %s%Cred%d%Creset %Cblue[%an]%Creset\" --date=short
+	ls = "!git lg --graph"
+	ll = "!git lg --numstat"
 [color]
 	ui = true
 [help]
@@ -24,7 +22,7 @@
 [push]
 	default = simple
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	cmd = /usr/local/bin/idea diff $REMOTE $BASE
 	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
@@ -33,3 +31,5 @@
 	extendRegexp = true
 [commit]
 	template = /Users/jo/.stCommitMsg
+[pull]
+    rebase = true
