@@ -73,6 +73,8 @@ alias pip3=launch_pip3_and_backup
 
 alias backup-workspace="$HOME/.backup-workspace.sh > $HOME/Dropbox/Antidot/workspace-restore.sh && chmod +x $HOME/Dropbox/Antidot/workspace-restore.sh"
 
+alias backup-backblaze="$HOME/.backup-backblaze.sh"
+
 function launch_git_and_backup() {
     command="/usr/local/bin/git"
     for arg in "$@"; do
