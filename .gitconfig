@@ -34,6 +34,8 @@
 	template = /Users/jo/.stCommitMsg
 [pull]
     rebase = true
+[merge]
+	ff = false
 [rebase]
 	autosquash = true
 [remote "origin"]
