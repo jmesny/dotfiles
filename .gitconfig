@@ -15,6 +15,7 @@
 	lg = log --pretty=format:\"%C(yellow)%h%Creset %ad - %s%Cred%d%Creset %Cblue[%an]%Creset\" --date=short
 	ls = "!git lg --graph"
 	ll = "!git lg --numstat"
+	fixnow = "!f() { git commit --fixup $1 && git rebase -i $1^; }; f"
 [color]
 	ui = true
 [help]
