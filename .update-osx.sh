@@ -5,9 +5,9 @@ echo "####################> Updates from Brew installer <####################"
 echo ""
 
 brew tap --repair
-brew update -y
-brew upgrade -y
-brew cleanup -s --force
+brew update
+brew upgrade
+brew cleanup -s
 
 echo ""
 echo "####################> Updates from Pip3 installer <####################"
