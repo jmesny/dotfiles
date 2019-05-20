@@ -112,6 +112,9 @@ source $HOME/.prompt.bash
 
 export GIT_MERGE_AUTOEDIT=no
 
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=5000
+export HISTFILESIZE=5000
 
 # https://github.com/playframework/playframework/blob/master/documentation/manual/gettingStarted/IDE.md#navigate-from-an-error-page-to-the-source-code
 export PLAY_EDITOR="http://localhost:63342/api/file/?file=%s&line=%s"
