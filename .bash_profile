@@ -1,3 +1,5 @@
+export LANG=en_US.UTF-8
+
 export WS="$HOME/Workspace"
 export PATH="$WS/ghar/bin:$PATH"
 export PATH="$HOME/.jenv/bin:$PATH"
