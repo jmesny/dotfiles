@@ -5,6 +5,7 @@ export PATH="$WS/ghar/bin:$PATH"
 export PATH="$HOME/.jenv/bin:$PATH"
 export PATH="$HOME/Applications/Firefox.app/Contents/MacOS:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 function pyenv {
 	export PYTHONPATH="$WS/python-ws-api/src"
