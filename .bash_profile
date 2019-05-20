@@ -2,7 +2,6 @@ export LANG=en_US.UTF-8
 
 export WS="$HOME/Workspace"
 export PATH="$WS/ghar/bin:$PATH"
-export PATH="$HOME/.jenv/bin:$PATH"
 export PATH="$HOME/Applications/Firefox.app/Contents/MacOS:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -103,10 +102,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
-# requires `brew install jenv`
-export JENV_ROOT=/usr/local/var/jenv
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-
 
 source ${WS}/ghar/ghar-bash-completion.sh
 source $HOME/.prompt.bash
@@ -119,3 +114,7 @@ export HISTFILESIZE=5000
 
 # https://github.com/playframework/playframework/blob/master/documentation/manual/gettingStarted/IDE.md#navigate-from-an-error-page-to-the-source-code
 export PLAY_EDITOR="http://localhost:63342/api/file/?file=%s&line=%s"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/jo/.sdkman"
+[[ -s "/Users/jo/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jo/.sdkman/bin/sdkman-init.sh"
