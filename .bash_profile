@@ -35,10 +35,11 @@ alias grep="grep --color=auto"
 alias scp="scp -vC"
 alias ssh="ssh -vC"
 
+alias ftvenv="source $WS/fluid-topics/.docker/venv/bin/activate"
 alias ws="cd $WS"
-alias ft="cd $WS/fluid-topics"
-alias fti="cd $WS/fluid-topics/interface"
-alias fts="cd $WS/fluid-topics/interface/fluid-topics-server"
+alias ft="cd $WS/fluid-topics && ftvenv"
+alias fti="cd $WS/fluid-topics/interface && ftvenv"
+alias fts="cd $WS/fluid-topics/interface/fluid-topics-server && ftvenv"
 
 alias update-osx="$HOME/.update-osx.sh"
 
