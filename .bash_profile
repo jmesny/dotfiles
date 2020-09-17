@@ -112,8 +112,6 @@ export GIT_MERGE_AUTOEDIT=no
 export HISTSIZE=5000
 export HISTFILESIZE=5000
 
-# https://github.com/playframework/playframework/blob/master/documentation/manual/gettingStarted/IDE.md#navigate-from-an-error-page-to-the-source-code
-export PLAY_EDITOR="http://localhost:63342/api/file/?file=%s&line=%s"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/jo/.sdkman"
