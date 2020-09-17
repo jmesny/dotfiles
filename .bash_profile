@@ -113,6 +113,9 @@ export HISTSIZE=5000
 export HISTFILESIZE=5000
 
 
+# requires `brew install gradle-completion`
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/jo/.sdkman"
 [[ -s "/Users/jo/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jo/.sdkman/bin/sdkman-init.sh"
