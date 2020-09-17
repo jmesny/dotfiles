@@ -1,5 +1,21 @@
 export LANG=en_US.UTF-8
 
+function clustermongo {
+    mongo -u ${VITRY_MONGO_CLUSTER__USER} \
+        -p"${VITRY_MONGO_CLUSTER__PASSWORD}" \
+        --authenticationDatabase admin \
+        --authenticationMechanism SCRAM-SHA-1 \
+        --host ${VITRY_MONGO_CLUSTER__MASTER}
+}
+
+function gpclustermongo {
+    mongo -u ${GP_MONGO_CLUSTER__USER} \
+        -p"${GP_MONGO_CLUSTER__PASSWORD}" \
+        --authenticationDatabase admin \
+        --authenticationMechanism SCRAM-SHA-1 \
+        --host ${GP_MONGO_CLUSTER__MASTER}
+}
+
 # Requires:
 #  - https://github.com/passbolt/passbolt_cli
 #  - https://github.com/Homebrew/homebrew-core/issues/14737#issuecomment-309547412
