@@ -3,7 +3,7 @@
 	email = jmesny@antidot.net
 [core]
 	autocrlf = input
-	safecrlf = true
+	safecrlf = warn
 	editor = vim
 	excludesfile = /Users/jo/.gitignore_global
 [alias]
@@ -13,8 +13,8 @@
 	cp = cherry-pick
 	br = branch
 	lg = log --pretty=format:\"%C(yellow)%h%Creset %ad - %s%Cred%d%Creset %Cblue[%an]%Creset\" --date=short
-	ls = "!git lg --graph"
-	ll = "!git lg --numstat"
+	ls = !git lg --graph
+	ll = !git lg --numstat
 	fixnow = "!f() { git commit --fixup $1 && git rebase -i $1^; }; f"
 [color]
 	ui = true
@@ -23,17 +23,17 @@
 [push]
 	default = simple
 [difftool "sourcetree"]
-	cmd = /usr/local/bin/idea diff $REMOTE $BASE
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [grep]
 	extendRegexp = true
 [commit]
 	template = /Users/jo/.stCommitMsg
 [pull]
-    rebase = true
+	rebase = true
 [merge]
 	ff = false
 [rebase]
