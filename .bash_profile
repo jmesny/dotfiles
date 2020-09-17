@@ -1,5 +1,21 @@
 export LANG=en_US.UTF-8
 
+# Requires:
+#  - https://github.com/passbolt/passbolt_cli
+#  - https://github.com/Homebrew/homebrew-core/issues/14737#issuecomment-309547412
+function antipass {
+IFS='
+'
+    for entry in $(passbolt find --columns=uuid,uri,username,name | grep -i $@); do
+        uuid=$(echo ${entry} | awk '{print $1}')
+        uri=$(echo ${entry} | awk '{print $2}')
+        user=$(echo ${entry} | awk '{print $3}')
+        name=$(echo ${entry} | sed "s#^${uuid}.*${uri}.*${user}[[:space:]]*##" | sed 's#[[:space:]]*$##')
+        pass=$(passbolt get ${uuid} | gpg -q --no-tty)
+        printf "%-50s %-70s %-30s %-30s\n" "${name}" "${uri}" "${user}" "${pass}"
+    done
+}
+
 export WS="$HOME/Workspace"
 export PATH="$WS/ghar/bin:$PATH"
 export PATH="$HOME/Applications/Firefox.app/Contents/MacOS:$PATH"
