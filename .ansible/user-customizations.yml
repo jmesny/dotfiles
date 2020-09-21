@@ -1,0 +1,58 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+#
+# Define your customizations after this block
+# Look for available extension points with the following command:
+# > find /Users/jo/Workspace/ansible-dev-env/roles -type f -regex ".*/vars/.*" -name "main.yml" -exec grep _custom_ {} \;
+#
+# END ANSIBLE MANAGED BLOCK
+
+homebrew_custom_formulae:
+  - gpg
+  - pinentry-mac
+  - unrar
+  - youtube-dl
+
+fluidtopics_custom_git_config:
+  - { section: "rebase", key: "autosquash", value: "true" }
+
+applications_custom_gui_dmgs:
+  - { name: "Dropbox", url: "https://www.dropbox.com/download?os=mac", dmg: "DropboxInstaller.dmg", volume: "Dropbox Installer", dock: false }
+  - { name: "VLC", url: "https://ftp.free.org/mirrors/videolan/vlc/3.0.11.1/macosx/vlc-3.0.11.1.dmg", dmg: "vlc-3.0.11.1.dmg", volume: "VLC media player", dock: false }
+
+applications_custom_gui_pkgs:
+  - { name: "1Password 7", url: "https://app-updates.agilebits.com/download/OPM7", pkg: "1Password-7.6.pkg", dock: false }
+  - { name: "Microsoft Teams", url: "https://statics.teams.cdn.office.net/production-osx/1.3.00.18164/Teams_osx.pkg", pkg: "Teams_osx.pkg", dock: false }
+
+applications_custom_gui_zips:
+  - { name: "Install Spotify", url: "https://download.scdn.co/SpotifyInstaller.zip", zip: "SpotifyInstaller.zip", dock: false }
+  - { name: "iStat Menus", url: "https://download.bjango.com/istatmenus/", zip: "istatmenus6.40.zip", dock: false }
+
+applications_custom_gui_mas:
+  - { name: "iPhiGéNie X", id: "1470222894", dock: false }
+  - { name: "Mactracker", id: "430255202", dock: false }
+  - { name: "Moom", id: "419330170", dock: false }
+  - { name: "Keynote", id: "409183694", dock: false }
+  - { name: "Pages", id: "409201541", dock: false }
+  - { name: "MoneyWiz", id: "1511185140", dock: false }
+
+fluidtopics_custom_git_repositories:
+  - { name: "ghar", url: "https://github.com/philips/ghar.git" }
+
+extras_custom_commands:
+  - { name: "Upgrading ghar", command: "{{ workspace_dir }}/ghar/bin/ghar pull" }
+  - { name: "Adding dotfiles repository to ghar", command: "{{ workspace_dir }}/ghar/bin/ghar add git@github.com:jmesny/dotfiles.git dotfiles" }
+  - { name: "Passbolt CLI download", command: "git clone git@github.com:passbolt/passbolt_cli.git {{ home_directory }}/Applications/passbolt_cli || (cd {{ home_directory }}/Applications/passbolt_cli/ && git pull)" }
+  - { name: "Passbolt CLI installation", command: "cd {{ home_directory }}/Applications/passbolt_cli && npm install && npm link" }
+  - { name: "Oh-my-Zsh installation", command: "rm -f {{ home_directory }}/.zshrc && rm -fr {{ home_directory }}/.oh-my-zsh && sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" || true" }
+  - { name: "Running ghar installation", command: "{{ workspace_dir }}/ghar/bin/ghar install" }
+  - { name: "Enable macOS touch-to-click trackpad option", command: "defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true ; defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true" }
+  - { name: "Disable macOS matural scrolling option", command: "defaults write -g com.apple.swipescrolldirection -bool no" }
+  - { name: "Disable Mission Control most-recent-used spaces reorganizing", command: "defaults write com.apple.dock mru-spaces -bool no" }
+  - { name: "Add Mission Control shortcut to top-right hot-corner", command: "defaults write com.apple.dock wvous-tr-corner -int 2 && defaults write com.apple.dock wvous-tr-modifier -int 0" }
+  - { name: "Add Notification Center shortcut to bottom-right hot-corner", command: "defaults write com.apple.dock wvous-br-corner -int 12 && defaults write com.apple.dock wvous-br-modifier -int 0" }
+  - { name: "Add shortcut to put display to sleep to top-left hot-corner", command: "defaults write com.apple.dock wvous-tl-corner -int 10 && defaults write com.apple.dock wvous-tl-modifier -int 0" }
+  - { name: "Add Desktop shortcut to bottom-left hot-corner", command: "defaults write com.apple.dock wvous-bl-corner -int 4 && defaults write com.apple.dock wvous-bl-modifier -int 0" }
+  - { name: "Enable tab navigation for all UI elements", command: "defaults write -g AppleKeyboardUIMode -int 2" }
+  - { name: "Speedup keyboard repat rate", command: "defaults write -g KeyRepeat -int 1 && defaults write -g InitialKeyRepeat -int 10" }
+  - { name: "Enable Dock autohide", command: "defaults write com.apple.dock autohide -bool true" }
+  - { name: "Restart configured apps", command: "killall cfprefsd Dock" }
