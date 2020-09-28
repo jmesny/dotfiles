@@ -1,0 +1,61 @@
+export WS="${HOME}/Workspace"
+export PATH="${WS}/ghar/bin:${PATH}"
+
+alias rm="rm -i"
+alias mv="mv -i"
+alias cp="cp -i"
+alias ls="ls -G"
+alias ll="ls -G -l"
+alias la="ls -G -a"
+alias lla="ls -G -la"
+alias grep="grep --color=auto"
+alias scp="scp -vC"
+alias ssh="ssh -vC"
+
+alias ansible-dev-env="${WS}/ansible-dev-env/run.sh"
+alias ftvenv="source ${WS}/fluid-topics/.docker/venv/bin/activate"
+alias ftvenv-quit="deactivate"
+alias ws="cd ${WS}"
+alias ft="cd ${WS}/fluid-topics && ftvenv"
+alias fti="cd ${WS}/fluid-topics/interface && ftvenv"
+alias fts="cd ${WS}/fluid-topics/interface/fluid-topics-server && ftvenv"
+
+export LANG=en_US.UTF-8
+export GIT_MERGE_AUTOEDIT=no
+
+
+function clustermongo {
+    mongo -u "${VITRY_MONGO_CLUSTER__USER}" \
+        -p"${VITRY_MONGO_CLUSTER__PASSWORD}" \
+        --authenticationDatabase admin \
+        --authenticationMechanism SCRAM-SHA-1 \
+        --host "${VITRY_MONGO_CLUSTER__MASTER}"
+}
+
+function gpclustermongo {
+    mongo -u "${GP_MONGO_CLUSTER__USER}" \
+        -p"${GP_MONGO_CLUSTER__PASSWORD}" \
+        --authenticationDatabase admin \
+        --authenticationMechanism SCRAM-SHA-1 \
+        --host "${GP_MONGO_CLUSTER__MASTER}"
+}
+
+# Requires:
+#  - https://github.com/passbolt/passbolt_cli
+#  - https://github.com/Homebrew/homebrew-core/issues/14737#issuecomment-309547412
+function antipass {
+IFS='
+'
+    for entry in $(passbolt find --columns=uuid,uri,username,name 2> /dev/null | grep -i "${@}"); do
+        uuid=$(echo "${entry}" | awk '{print $1}')
+        uri=$(echo "${entry}" | awk '{print $2}')
+        user=$(echo "${entry}" | awk '{print $3}')
+        name=$(echo "${entry}" | sed "s#^${uuid}.*${uri}.*${user}[[:space:]]*##" | sed 's#[[:space:]]*$##')
+        pass=$(passbolt get "${uuid}" 2> /dev/null | gpg -q --no-tty)
+        printf "%-50s %-70s %-30s %-30s\n" "${name}" "${uri}" "${user}" "${pass}"
+    done
+}
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/jo/.sdkman"
+[[ -s "/Users/jo/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jo/.sdkman/bin/sdkman-init.sh"
